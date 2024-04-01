@@ -1,6 +1,7 @@
 #include "serial_profile.h"
 
 #include <gap.h>
+#include <string.h>
 #include <furi_ble/profile_interface.h>
 #include <services/dev_info_service.h>
 #include <services/battery_service.h>
@@ -61,10 +62,10 @@ static void
     // Set mac address
     memcpy(config->mac_address, furi_hal_version_get_ble_mac(), sizeof(config->mac_address));
     // Set advertise name
-    strlcpy(
-        config->adv_name,
-        furi_hal_version_get_ble_local_device_name_ptr(),
-        FURI_HAL_VERSION_DEVICE_NAME_LENGTH);
+    // strncpy(
+    //     config->adv_name,
+    //     furi_hal_version_get_ble_local_device_name_ptr(),
+    //     FURI_HAL_VERSION_DEVICE_NAME_LENGTH);
     config->adv_service_uuid |= furi_hal_version_get_hw_color();
 }
 

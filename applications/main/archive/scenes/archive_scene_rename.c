@@ -4,6 +4,7 @@
 #include "../helpers/archive_browser.h"
 #include "archive/views/archive_browser_view.h"
 #include "toolbox/path.h"
+#include <string.h>
 
 #define SCENE_RENAME_CUSTOM_EVENT (0UL)
 #define MAX_TEXT_INPUT_LEN 22
@@ -22,7 +23,7 @@ void archive_scene_rename_on_enter(void* context) {
     FuriString* filename;
     filename = furi_string_alloc();
     path_extract_filename(current->path, filename, true);
-    strlcpy(archive->text_store, furi_string_get_cstr(filename), MAX_NAME_LEN);
+    strncpy(archive->text_store, furi_string_get_cstr(filename), MAX_NAME_LEN);
 
     path_extract_extension(current->path, archive->file_extension, MAX_EXT_LEN);
 

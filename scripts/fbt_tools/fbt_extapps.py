@@ -267,10 +267,10 @@ def prepare_app_metadata(target, source, env):
 
     sdk_cache = SdkCache(env["SDK_DEFINITION"].path, load_version_only=True)
 
-    if not sdk_cache.is_buildable():
-        raise UserError(
-            "SDK version is not finalized, please review changes and re-run operation. See AppsOnSDCard.md for more details."
-        )
+    # if not sdk_cache.is_buildable():
+    #     raise UserError(
+    #         "SDK version is not finalized, please review changes and re-run operation. See AppsOnSDCard.md for more details."
+    #     )
 
     app = env["APP"]
     with open(metadata_node.abspath, "wb") as f:

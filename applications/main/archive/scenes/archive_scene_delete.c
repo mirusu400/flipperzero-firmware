@@ -4,6 +4,7 @@
 #include "../helpers/archive_apps.h"
 #include "../helpers/archive_browser.h"
 #include "toolbox/path.h"
+#include <string.h>
 
 #define SCENE_DELETE_CUSTOM_EVENT (0UL)
 #define MAX_TEXT_INPUT_LEN 22
@@ -32,7 +33,7 @@ void archive_scene_delete_on_enter(void* context) {
 
     FuriString* filename_no_ext = furi_string_alloc();
     path_extract_filename(current->path, filename_no_ext, true);
-    strlcpy(app->text_store, furi_string_get_cstr(filename_no_ext), MAX_NAME_LEN);
+    strncpy(app->text_store, furi_string_get_cstr(filename_no_ext), MAX_NAME_LEN);
     furi_string_free(filename_no_ext);
 
     path_extract_filename(current->path, filename, false);

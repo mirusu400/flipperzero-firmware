@@ -1,7 +1,7 @@
 #pragma once
 
 #include "usb.h"
-
+#include <usbd_core.h>
 #ifdef __cplusplus
 extern "C" {
 #endif

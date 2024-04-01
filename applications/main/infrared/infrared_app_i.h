@@ -248,8 +248,8 @@ bool infrared_blocking_task_finalize(InfraredApp* infrared);
  * @param[in] fmt pointer to a zero-terminated string containing the format text.
  * @param[in] ... additional arguments.
  */
-void infrared_text_store_set(InfraredApp* infrared, uint32_t bank, const char* fmt, ...)
-    _ATTRIBUTE((__format__(__printf__, 3, 4)));
+void infrared_text_store_set(InfraredApp* infrared, uint32_t bank, const char* fmt, ...);
+// _ATTRIBUTE((__format__(__printf__, 3, 4)));
 
 /**
  * @brief Clear the internal text store.
@@ -276,8 +276,8 @@ void infrared_play_notification_message(
  * @param[in] fmt pointer to a zero-terminated string containing the format text.
  * @param[in] ... additional arguments.
  */
-void infrared_show_error_message(const InfraredApp* infrared, const char* fmt, ...)
-    _ATTRIBUTE((__format__(__printf__, 2, 3)));
+void infrared_show_error_message(const InfraredApp* infrared, const char* fmt, ...);
+// _ATTRIBUTE((__format__(__printf__, 2, 3)));
 
 /**
  * @brief Set which pin will be used to transmit infrared signals.

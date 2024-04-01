@@ -1,6 +1,7 @@
 #include <core/common_defines.h>
 #include "../js_modules.h"
 #include <furi_hal.h>
+#include <string.h>
 
 typedef struct {
     FuriHalUsbHidConfig* hid_cfg;
@@ -88,7 +89,7 @@ static bool setup_parse_params(struct mjs* mjs, mjs_val_t arg, FuriHalUsbHidConf
         if((str_len == 0) || (str_temp == NULL)) {
             return false;
         }
-        strlcpy(hid_cfg->manuf, str_temp, sizeof(hid_cfg->manuf));
+        strncpy(hid_cfg->manuf, str_temp, sizeof(hid_cfg->manuf));
     }
 
     if(mjs_is_string(prod_obj)) {
@@ -97,7 +98,7 @@ static bool setup_parse_params(struct mjs* mjs, mjs_val_t arg, FuriHalUsbHidConf
         if((str_len == 0) || (str_temp == NULL)) {
             return false;
         }
-        strlcpy(hid_cfg->product, str_temp, sizeof(hid_cfg->product));
+        strncpy(hid_cfg->product, str_temp, sizeof(hid_cfg->product));
     }
 
     return true;

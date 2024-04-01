@@ -58,14 +58,18 @@ def generate(env, **kw):
     env.SetDefault(
         TOOLCHAIN_PREFIX=kw.get("toolchain_prefix"),
     )
+    # env["TOOLCHAIN_PREFIX"] = env.subst("$TOOLCHAIN_PREFIX")
+    env["CC"] = "gclang"
+    env["CXX"] = "gclang++"
     prefix_commands(
         env,
+        # "",
         env.subst("$TOOLCHAIN_PREFIX"),
         [
             "AR",
             "AS",
-            "CC",
-            "CXX",
+            # "CC",
+            # "CXX",
             "OBJCOPY",
             "RANLIB",
             "STRIP",
@@ -74,15 +78,32 @@ def generate(env, **kw):
             "OBJDUMP",
         ],
     )
+    prefix_commands(
+        env,
+        "",
+        # 'env.subst("$TOOLCHAIN_PREFIX")',
+        [
+            # "AR",
+            # "AS",
+            "CC",
+            "CXX",
+            # "OBJCOPY",
+            # "RANLIB",
+            # "STRIP",
+            # "GDB",
+            # "GDBPY",
+            # "OBJDUMP",
+        ],
+    )
     # Call CC to check version
     if whitelisted_versions := kw.get("versions", ()):
         cc_version = _get_tool_version(env, "CC")
         # print("CC version =", cc_version)
         # print(list(filter(lambda v: v in cc_version, whitelisted_versions)))
-        if not any(filter(lambda v: v in cc_version, whitelisted_versions)):
-            raise StopError(
-                f"Toolchain version is not supported. Allowed: {whitelisted_versions}, toolchain: {cc_version} "
-            )
+        # if not any(filter(lambda v: v in cc_version, whitelisted_versions)):
+        #     raise StopError(
+        #         f"Toolchain version is not supported. Allowed: {whitelisted_versions}, toolchain: {cc_version} "
+        #     )
 
 
 def exists(env):

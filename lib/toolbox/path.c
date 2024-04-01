@@ -1,5 +1,6 @@
 #include "path.h"
 #include <stddef.h>
+#include <string.h>
 
 void path_extract_filename_no_ext(const char* path, FuriString* filename) {
     furi_check(path);
@@ -48,7 +49,7 @@ void path_extract_extension(FuriString* path, char* ext, size_t ext_len_max) {
     size_t filename_start = furi_string_search_rchar(path, '/');
 
     if((dot != FURI_STRING_FAILURE) && (filename_start < dot)) {
-        strlcpy(ext, &(furi_string_get_cstr(path))[dot], ext_len_max);
+        strncpy(ext, &(furi_string_get_cstr(path))[dot], ext_len_max);
     }
 }
 

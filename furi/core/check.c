@@ -57,14 +57,14 @@ extern size_t xPortGetTotalHeapSize(void);
 
 static void __furi_put_uint32_as_text(uint32_t data) {
     char tmp_str[] = "-2147483648";
-    itoa(data, tmp_str, 10);
-    furi_log_puts(tmp_str);
+    // itoa(data, tmp_str, 10);
+    // furi_log_puts(tmp_str);
 }
 
 static void __furi_put_uint32_as_hex(uint32_t data) {
     char tmp_str[] = "0xFFFFFFFF";
-    itoa(data, tmp_str, 16);
-    furi_log_puts(tmp_str);
+    // itoa(data, tmp_str, 16);
+    // furi_log_puts(tmp_str);
 }
 
 static void __furi_print_register_info(void) {

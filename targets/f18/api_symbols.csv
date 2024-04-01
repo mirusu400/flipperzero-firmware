@@ -2502,7 +2502,7 @@ Function,-,strerror_l,char*,"int, locale_t"
 Function,-,strerror_r,char*,"int, char*, size_t"
 Function,+,string_stream_alloc,Stream*,
 Function,-,strlcat,size_t,"char*, const char*, size_t"
-Function,+,strlcpy,size_t,"char*, const char*, size_t"
+Function,+,strncpy,size_t,"char*, const char*, size_t"
 Function,+,strlen,size_t,const char*
 Function,-,strlwr,char*,char*
 Function,+,strncasecmp,int,"const char*, const char*, size_t"

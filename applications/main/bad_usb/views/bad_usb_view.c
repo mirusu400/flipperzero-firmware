@@ -3,6 +3,7 @@
 #include <toolbox/path.h>
 #include <gui/elements.h>
 #include <assets_icons.h>
+#include <string.h>
 
 #define MAX_NAME_LEN 64
 
@@ -238,7 +239,7 @@ void bad_usb_view_set_file_name(BadUsb* bad_usb, const char* name) {
     with_view_model(
         bad_usb->view,
         BadUsbModel * model,
-        { strlcpy(model->file_name, name, MAX_NAME_LEN); },
+        { strncpy(model->file_name, name, MAX_NAME_LEN); },
         true);
 }
 
@@ -247,7 +248,7 @@ void bad_usb_view_set_layout(BadUsb* bad_usb, const char* layout) {
     with_view_model(
         bad_usb->view,
         BadUsbModel * model,
-        { strlcpy(model->layout, layout, MAX_NAME_LEN); },
+        { strncpy(model->layout, layout, MAX_NAME_LEN); },
         true);
 }
 
